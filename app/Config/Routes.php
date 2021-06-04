@@ -58,7 +58,7 @@ $routes->setAutoRoute(true);
 // sesuaikan (:any) dengan jenis data yg dimasukkan. dapat dilihat di documentation CI4
 // ---------------------------------------------------------------------------------------------------------------------
 
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Pages::index');
 
 /*
  * --------------------------------------------------------------------
