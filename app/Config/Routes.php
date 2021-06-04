@@ -32,6 +32,32 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// ---------------------------------------------------------------------------------------------------------------------
+// get => adalah metode request
+// kalau mau akses menggunakan url maka gunakan metode request get
+// kalau mau bekerja dengan form gunakan metode request post
+// kalau mau menghapus data dari database gunakan metode request delete
+// sekarang di CI4 ada http spoofing
+
+// perilaku routes: closure (gk menggunakan controller & method) //
+// $routes->get('/', function(){
+// 	echo 'Hello World!';
+// });
+
+// mengirimkan data dari url ke controller //
+// segmen ketiga dst adalah data yg akan dimasukkan ke method (controller/method/data/data)
+// dideklarasi method, berikan parameter yg akan menampung data, kemudian panggil parameternya didalam isi method
+// data di url harus diisi, bila tidak diisi, berikan parameter default di method-nya
+
+// memberikan placeholder pada routes agar dapat menampung data dari url //
+// dengan begitu maka routes akan dituliskan lebih pendek, dan akan diarahkan ke controller Coba method about
+// kemudian data yg dimasukkan di url (:any) akan ditangkap oleh $1
+// $routes->get('/coba/(:any)', 'Coba::about/$1')
+// jika data yg dimasukkan lebih dari satu maka tambahkan /(:any) dan /$2
+// sesuaikan (:any) dengan jenis data yg dimasukkan. dapat dilihat di documentation CI4
+// ---------------------------------------------------------------------------------------------------------------------
+
 $routes->get('/', 'Home::index');
 
 /*
