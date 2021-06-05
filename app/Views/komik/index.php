@@ -31,7 +31,9 @@
                         <td><img src="/img/<?= $k['sampul']; ?>" alt="" class="sampul"></td>
                         <td><?= $k['judul']; ?></td>
                         <td>
-                            <a href="" class="btn btn-success">Detail</a>
+                            <!-- link ini nantinya akan terisi data slug dari database,-->
+                            <!-- kemudian data slug tsb akan dikirim ke controller komik method detail (menggunakan routes) -->
+                            <a href="/komik/<?= $k['slug']; ?>" class="btn btn-success">Detail</a>
                         </td>
                     </tr>
                     <?php endForeach; ?>
