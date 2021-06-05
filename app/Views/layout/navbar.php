@@ -1,6 +1,6 @@
  <!-- navbar -->
  <!-- ini adalah View Partial, yaitu view yang bisa digunakan kembali.
-      View Partial bisa kita include-kan atau gunakan di dalam Layout maupun View -->
+      View Partial bisa kita include-kan atau gunakan di dalam Layout maupun View. -->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
      <div class="container-fluid">
          <a class="navbar-brand" href="#">Belajar CI4</a>
@@ -17,6 +17,9 @@
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="/Pages/contact">Contact</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/Komik">Komik</a>
                  </li>
              </ul>
          </div>

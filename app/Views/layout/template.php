@@ -14,6 +14,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
+    <!-- my style.css -->
+    <!-- / (slash) akan langsung menuju folder public -->
+    <link rel="stylesheet" href="/css/style.css">
+
     <!-- judul -->
     <!-- kode ini berfungsi untuk merender section konten yang ada didalam view.
          jadi nanti dibagian ini akan berisi konten yang berbeda-beda. -->
