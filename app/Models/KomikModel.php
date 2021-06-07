@@ -13,6 +13,8 @@ class KomikModel extends Model
     protected $table = 'komik';
     // $useTimestamps = jika butuh fitur created_at & updated_at otomatis, nilainya jadikan true
     protected $useTimestamps = true;
+    // memberitahu field mana yang boleh diisi manual (karena ada field yg diisi otomatis yaitu id, created_at & updated_at)
+    protected $allowedFields = ['judul','slug','penulis','penerbit','sampul'];
 
     // default parameter ($slug) adalah kosong
     public function getKomik($slug = false)
