@@ -54,6 +54,10 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		
+		// session () => untuk menangkap session, seperti data validation(), dll
+		session();
+		
 		// inisialisasi kelas KomikModel
 		$this->komikModel = new \App\Models\KomikModel();
 	}

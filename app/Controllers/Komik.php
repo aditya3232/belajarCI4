@@ -41,12 +41,44 @@ class Komik extends BaseController
 
     public function create()
     {
+        // mengambil data validation, dari validasi form input yg ada didalam method save, agar masuk ke view create
+        // jgn lupa ketika menggunakan validation(), tambahkan session() di BaseController
+        $data = [
+            'validation' => \Config\Services::validation()
+        ];
+
         // menampilkan halaman insert data/create data/tambah data (sama saja)
-        return view('komik/create');
+        return view('komik/create', $data);
     }
 
     public function save()
     {
+        // validasi form input
+        // dengan validasi form, ketika salah memasukkan input, maka tombol tambah data gk akan jalan
+        // arti dari konidisi ini adalah jika parameter tidak valid, 
+        // maka kembalikan ke controller /Komik/create, beserta semua inputan sebelumnya, & fungsi validasi
+        if(!$this->validate([
+            // 'name inputan' => 'rules1|rules2', 
+            // informasi rules dapat dilihat di documentation tentang validation
+            // is_unique[nama tabel.field tabel] (is_unique => judul komik tidak boleh sama)
+            // 'judul' => 'required|is_unique[komik.judul]'  => INI CARA NORMAL, PESANNYA BAHASA INGGRIS SESUAI CI4
+
+            // memberikan rules dan pesan error bahasa indonesia
+            'judul' => [
+                'rules'     => 'required|is_unique[komik.judul]',
+                'errors'    => [
+                    // {field}, buat ngambil name formnya yaitu judul
+                    'required'  => '{field} komik harus diisi.',
+                    'is_unique' => '{field} komik sudah terdaftar.'
+                ]
+            ]
+        ])){
+            //fungsi validation() dimasukkan ke variabel $validation
+            $validation = \Config\Services::validation(); 
+            // withInput() disini digunakan untuk menampung hasil inputan yang akan di validasi, & di simpan di function old()
+            return redirect()->to('/Komik/create')->withInput()->with('validation', $validation);
+        }
+
         // mengolah judul yang diubah menjadi slug, sehingga judul jadi ramah url
         // parameternya adalah (ambil judulnya, separatornya apa, lowecase true/false)
         $slug = url_title($this->request->getVar('judul'), '-', true);
@@ -55,7 +87,7 @@ class Komik extends BaseController
             // mengambil field yang akan disimpan
             // getVar(), bisa method post atau get
             'judul'     => $this->request->getVar('judul'),
-            'slug'     => $slug, //field 'slug', akan diisi dengan variabel $slug = (url_title())
+            'slug'     =>  $slug, //field 'slug', akan diisi dengan variabel $slug = (url_title())
             'penulis'   => $this->request->getVar('penulis'),
             'penerbit'  => $this->request->getVar('penerbit'),
             'sampul'    => $this->request->getVar('sampul')
