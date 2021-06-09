@@ -24,8 +24,10 @@
                             <p class="card-text"><b>Penulis :</b><?= $komik['penulis']; ?></p>
                             <!-- akan mengambil penerbit sesuai dengan slug-nya -->
                             <p class="card-text"><small class="text-muted"><b>Penerbit :</b><?= $komik['penerbit']; ?></small></p>
-                            <a href="" class="btn btn-warning">Edit</a>
+                            <!-- edit (menuju controller Komik method edit)-->
+                            <a href="/Komik/edit/<?= $komik['slug']; ?>" class="btn btn-warning">Edit</a>
                             <!-- fitur delete dengan http method spoofing (aturan penulisan http method spoofing ini sudah standar) -->
+                            <!-- menuju controller Komik dengan mengirimkan id berdasarkan database -->
                             <form action="/komik/<?= $komik['id']; ?>" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">

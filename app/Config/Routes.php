@@ -56,13 +56,24 @@ $routes->setAutoRoute(true);
 // $routes->get('/coba/(:any)', 'Coba::about/$1')
 // jika data yg dimasukkan lebih dari satu maka tambahkan /(:any) dan /$2
 // sesuaikan (:any) dengan jenis data yg dimasukkan. dapat dilihat di documentation CI4
+
+// routes biasanya untuk mengatur agar url menuju ke controller apa method apa 
+// kalau sebuah action dari form, kan biasanya langsung menuju ke controller apa method apa. jadi gk perlu diberi routes,
+// kecuali kalau action dari form, terdapat http method spoofingnya, maka harus di atur routesnya
 // ---------------------------------------------------------------------------------------------------------------------
 
 $routes->get('/', 'Pages::index');
-// routes method request delete (dari http method spoofing) 
+// routes method request delete (dari http method spoofing), dengan begitu link /komik/(:num) tidak akan terlihat
 $routes->delete('/komik/(:num)', 'Komik::delete/$1');
 // segement nya berisi slug dari database
 $routes->get('/komik/(:any)', 'Komik::detail/$1');
+// routes edit
+$routes->get('/Komik/edit/(:segment)', 'Komik::edit/$1');
+// routes create
+$routes->get('/Komik/create', 'Komik::create');
+
+
+
 
 /*
  * --------------------------------------------------------------------
