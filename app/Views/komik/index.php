@@ -10,7 +10,7 @@
         <div class="col">
             <!-- tombol insert data/tambah data -->
             <a href="/Komik/create" class="btn btn-primary mt-3">Tambah Data Komik</a>
-            <!-- menampilkan session berhasil simpan data -->
+            <!-- menampilkan session dengan key 'pesan' -->
             <?php if(session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= session()->getFlashdata('pesan'); ?>

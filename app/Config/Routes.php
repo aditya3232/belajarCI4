@@ -59,8 +59,10 @@ $routes->setAutoRoute(true);
 // ---------------------------------------------------------------------------------------------------------------------
 
 $routes->get('/', 'Pages::index');
+// routes method request delete (dari http method spoofing) 
+$routes->delete('/komik/(:num)', 'Komik::delete/$1');
 // segement nya berisi slug dari database
-$routes->get('/komik/(:segment)', 'Komik::detail/$1');
+$routes->get('/komik/(:any)', 'Komik::detail/$1');
 
 /*
  * --------------------------------------------------------------------
